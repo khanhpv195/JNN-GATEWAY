@@ -1,0 +1,44 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: dockerfiles/node_base.Dockerfile
+      args:
+        node_version: "node:20.14.0-alpine"
+    container_name: api_container
+    working_dir: /crm
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./api:/crm:cached
+      - ./api/node_modules:/crm/node_modules
+    networks:
+      - my-network
+    command: nodemon launcher.js moon
+
+  admin:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    container_name: admin_container
+    ports:
+      - "8081:8080"
+    networks:
+      - my-network
+
+  nginx-proxy:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - my-network
+    depends_on:
+      - api
+      - admin
+
+networks:
+  my-network:
+    driver: bridge
