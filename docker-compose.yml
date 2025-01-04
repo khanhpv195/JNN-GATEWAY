@@ -6,9 +6,13 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
-      - my-network
+      - api_default
+      - frontend_network
 
 networks:
-  my-network:
-    name: my-network
+  api_default:
     external: true
+    name: api_default
+  frontend_network:
+    external: true
+    name: frontend_network
