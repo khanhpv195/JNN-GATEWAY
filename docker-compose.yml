@@ -9,6 +9,7 @@ services:
       - api_default
       - frontend_network
       - cleaner_network
+      - app_network
 networks:
   api_default:
     external: true
@@ -19,3 +20,6 @@ networks:
   cleaner_network:
     external: true
     name: cleaner_network
+  app_network:
+    external: true
+    name: app_network

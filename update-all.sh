@@ -17,6 +17,7 @@ sudo docker compose up --build -d
 echo "Updating Cleaner App..."
 cd ../cleaner-app
 git pull
+npm install
 npx expo export
 sudo docker compose restart
 
@@ -24,6 +25,7 @@ sudo docker compose restart
 echo "Updating App..."
 cd ../app
 git pull
+npm install
 npx expo export
 sudo docker compose restart
 
