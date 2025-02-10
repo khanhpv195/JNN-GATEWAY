@@ -16,3 +16,6 @@ networks:
   frontend_network:
     external: true
     name: frontend_network
+  cleaner_network:
+    external: true
+    name: cleaner_network
