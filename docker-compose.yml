@@ -8,7 +8,7 @@ services:
     networks:
       - api_default
       - frontend_network
-
+      - cleaner_network
 networks:
   api_default:
     external: true
