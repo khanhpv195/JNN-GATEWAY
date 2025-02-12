@@ -18,11 +18,11 @@ self.addEventListener('push', function (event) {
             actions: [
                 {
                     action: 'open',
-                    title: 'Mở'
+                    title: 'Open'
                 },
                 {
                     action: 'close',
-                    title: 'Đóng'
+                    title: 'Close'
                 }
             ]
         };
@@ -37,7 +37,6 @@ self.addEventListener('notificationclick', function (event) {
     event.notification.close();
 
     if (event.action === 'open') {
-        // Mở URL được gửi từ server
         clients.openWindow(event.notification.data);
     }
 }); 

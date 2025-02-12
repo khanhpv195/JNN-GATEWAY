@@ -15,18 +15,14 @@ sudo docker compose up --build -d
 
 # Update Cleaner App
 echo "Updating Cleaner App..."
-cd ../cleaner-app
+cd ../app/cleaner
 git pull
-npm install
-npx expo export
 sudo docker compose restart
 
 # Update App
 echo "Updating App..."
-cd ../app
+cd ../app/admin
 git pull
-npm install
-npx expo export
 sudo docker compose restart
 
 echo "All updates completed!" 
